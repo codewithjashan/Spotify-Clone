@@ -16,7 +16,7 @@ function secondsToMinutesSeconds(seconds) {
 }
 
 async function getSongs() {
-    let a = await fetch("http://127.0.0.1:3002/songs/")
+    let a = await fetch("http://127.0.0.1:3000/songs/")
     let response = await a.text();
     console.log(response)
     let div = document.createElement("div")
@@ -104,6 +104,15 @@ async function main() {
         let percent = (e.offsetX/e.target.getBoundingClientRect().width) * 100;
         document.querySelector(".circle").style.left = percent + "%";
         currentSong.currentTime = (currentSong.duration)* percent/100
+    })
+
+    // Add an event listner for hamburger
+    document.querySelector(".hamburger").addEventListener("click", ()=>{
+        document.querySelector(".left").style.left = "0"
+    })
+    // Add an event listner for close
+    document.querySelector(".close").addEventListener("click", ()=>{
+        document.querySelector(".left").style.left = "-120%"
     })
 }
   
